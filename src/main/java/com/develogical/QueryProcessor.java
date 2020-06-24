@@ -3,7 +3,11 @@ package com.develogical;
 public class QueryProcessor {
 
     public String process(String query) {
-        if(query.toLowerCase().contains("largest")){
+        if(query.toLowerCase().contains("plus")){
+            int num = getSum(query);
+            return num+" is the total sum";
+        }
+        else if(query.toLowerCase().contains("largest")){
             int num = findLargest(query);
             return num+" is the largest number";
         }
@@ -17,7 +21,7 @@ public class QueryProcessor {
     }
 
     private int findLargest(String query) {
-        if (query != null & query.isEmpty()) {
+        if (query != null & !query.isEmpty()) {
             try {
                 int a = new Integer(query.substring(query.indexOf(":") + 1, query.indexOf(",")).trim()).intValue();
                 int b = new Integer(query.substring(query.indexOf(",") + 1, query.length()).trim()).intValue();
@@ -29,6 +33,21 @@ public class QueryProcessor {
 
             }
         }
+        return -1;
+    }
+
+    private int getSum(String query){
+        if (query != null & !query.isEmpty()) {
+            try {
+                int a = new Integer(query.substring(query.indexOf("is") + 3, query.indexOf("plus")).trim()).intValue();
+                int b = new Integer(query.substring(query.indexOf("plus") + 4, query.length()).trim()).intValue();
+
+                return a + b;
+            }catch(Exception e){
+
+            }
+        }
+
         return -1;
     }
 }
