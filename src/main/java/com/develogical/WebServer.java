@@ -34,6 +34,9 @@ public class WebServer {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       String query = req.getParameter("q");
       new ApiResponse(new QueryProcessor().process(query)).writeTo(resp);
+      //at=info method=GET path="/api?q=31482c70:%20what%20is%20your%20name"
+      // host=skeleton-java-app-arun.herokuapp.com
+      // request_id=4cc6385f-6273-4f01-b3f7-7f060f17acf3 fwd="54.246.22.217" dyno=web.1 connect=0ms service=3ms status=200 bytes=183 protocol=https
     }
   }
 
